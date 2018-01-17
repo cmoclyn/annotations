@@ -1,0 +1,8 @@
+language: php
+php:
+  - '7.1'
+  - nightly
+script: phpunit --testsuite Tests --configuration Tests/phpunit.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t 18b28339-613b-4483-8914-2182b8bac08e
