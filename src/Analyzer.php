@@ -38,12 +38,12 @@ class Analyzer{
    */
   public function getAnnotationsTypesClass():\Generator{
     foreach($this->getFiles(self::DEFAULT_TYPES_DIRECTORY) as $file){
-      $class = 'Annotations\Types\\'.basename(explode('.', $file)[0]); // Create the classname from the filename
+      $class = 'Annotations\Types\\'.basename($file, '.php'); // Create the classname from the filename
       method_exists($class, 'checkAnnotation') ? yield $class : null;
     }
     if(!is_null($this->annotationsTypesDirectory)){
       foreach($this->getFiles($this->annotationsTypesDirectory) as $file){
-        $class = 'Annotations\Types\\'.basename(explode('.', $file)[0]); // Create the classname from the filename
+        $class = 'Annotations\Types\\'.basename($file, '.php'); // Create the classname from the filename
         method_exists($class, 'checkAnnotation') ? yield $class : null;
       }
     }
